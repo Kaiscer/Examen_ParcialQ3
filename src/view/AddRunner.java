@@ -17,9 +17,12 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 
 public class AddRunner extends JPanel {
-	private static final String [] MODALIDAD = {"10000", "Medio Maratón", "Maratón"};
+	private static final String [] MODALIDAD = {" ","10000", "Medio Maratón", "Maratón"};
 	public static final String BTN_ADD = "Añadir";
 	public static final String BTN_CLEAN = "limpiar";
+	public static final String RDBTN_MAN = "Hombre";
+	public static final String RDBTN_WOMAN = "Mujer";
+	
 	private JTextField txtname;
 	private JTextField txtDorsal;
 	private JRadioButton rdbtnMan;
@@ -57,12 +60,12 @@ public class AddRunner extends JPanel {
 		lblSexo.setBounds(6, 113, 40, 16);
 		add(lblSexo);
 		
-		rdbtnMan = new JRadioButton("Hombre");
+		rdbtnMan = new JRadioButton(RDBTN_MAN);
 		buttonGSexo.add(rdbtnMan);
 		rdbtnMan.setBounds(74, 109, 87, 23);
 		add(rdbtnMan);
 		
-		rdbtnWoman = new JRadioButton("Mujer");
+		rdbtnWoman = new JRadioButton(RDBTN_WOMAN);
 		buttonGSexo.add(rdbtnWoman);
 		rdbtnWoman.setBounds(160, 109, 87, 23);
 		add(rdbtnWoman);
@@ -73,7 +76,7 @@ public class AddRunner extends JPanel {
 		
 		spnEdad = new JSpinner();
 		spnEdad.setEditor(new JSpinner.DefaultEditor(spnEdad));
-		spnEdad.setModel(new SpinnerNumberModel(0, 0, 100, 1));
+		spnEdad.setModel(new SpinnerNumberModel(16, 0, 100, 1));
 		spnEdad.setBounds(75, 150, 59, 26);
 		add(spnEdad);
 		
@@ -136,8 +139,14 @@ public class AddRunner extends JPanel {
 					
 					String mod = (String)cmbModalidad.getSelectedItem();
 					
+					if (mod.equals(" ")) {
+						JOptionPane.showConfirmDialog(this, "Debes elegir la modalidad", "Error de difultad", JOptionPane.ERROR_MESSAGE);
+					}else {
+						
+						rn = new Runner(name, dorsal, sexo, edad, mod);	
+					}
 					
-					rn = new Runner(name, dorsal, sexo, edad, mod);	
+					
 					
 				}
 				

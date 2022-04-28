@@ -70,32 +70,34 @@ public class ControllerMadridRockRoll implements ActionListener {
 					data.addCorredor(rn);
 					
 					JOptionPane.showMessageDialog(pAdd, "Corredor añadido", "Resultado de operación", JOptionPane.INFORMATION_MESSAGE);	
-
+					pAdd.cleanForm();
 				}
 				
 			}else if (btn == pAdd.getBtnClean()) {
 				
 				pAdd.cleanForm();
+				
 			}else if (btn == pSee.getBtnSee()) {
-				
-				if (!data.getListRunners().isEmpty()) {
-					pSee.hacerVisible(true);
-				}else {
+				if (data.getListRunners().isEmpty()) {
 					JOptionPane.showConfirmDialog(pSee, "No hay datos cargados", "Error de datos", JOptionPane.ERROR_MESSAGE);
-				}
 				
+				}else {
+					pSee.fillTable(data.getListRunners());
+					pSee.hacerVisible(true);
+					
+					if (pSee.getRdbtnSeeMan().isSelected()) {
+						pSee.fillTable(data.getListFilter(AddRunner.RDBTN_MAN));
+					}else if (pSee.getRdbtnSeeWoman().isSelected()) {
+						pSee.fillTable(data.getListFilter(AddRunner.RDBTN_WOMAN));
+					}
+					
+				}
+					
+	
 				
 			}
 			
-		}else if (e.getSource() instanceof JRadioButton) {
-			JRadioButton rdbt = (JRadioButton)e.getSource();
-			if (rdbt == pSee.getRdbtnSeeAll()) {
-				pSee.fillTable(data.getListRunners());
-			}else if (rdbt == pSee.getRdbtnSeeMan()) {
-				pSee.fillTable(data.getListFilter("Hombre"));
-			}else if (rdbt == pSee.getRdbtnSeeWoman()) {
-				pSee.fillTable(data.getListFilter("Mujer"));
-			}
+		
 		}
 
 	}

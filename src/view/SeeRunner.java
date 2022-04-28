@@ -18,12 +18,12 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 
 public class SeeRunner extends JPanel {
-	public static final String BTN_SEE = "Consultar";
+	public static final String BTN_SEE = "Mostrar Lista";
 	private JScrollPane scrollTable;
 	private JTable tableRunners;
 	private JRadioButton rdbtnSeeMan;
 	private JRadioButton rdbtnSeeWoman;
-	private JRadioButton rdbtnSeeAll;
+	
 	private final ButtonGroup btnGSee = new ButtonGroup();
 	private JButton btnSee;
 	private DefaultTableModel tModel;
@@ -49,20 +49,16 @@ public class SeeRunner extends JPanel {
 		lblFiltrar.setBounds(6, 22, 76, 16);
 		add(lblFiltrar);
 		
-		rdbtnSeeMan = new JRadioButton("Hombre");
+		rdbtnSeeMan = new JRadioButton(AddRunner.RDBTN_MAN);
 		btnGSee.add(rdbtnSeeMan);
 		rdbtnSeeMan.setBounds(6, 50, 89, 23);
 		add(rdbtnSeeMan);
 		
-		rdbtnSeeWoman = new JRadioButton("Mujer");
+		rdbtnSeeWoman = new JRadioButton(AddRunner.RDBTN_WOMAN);
 		btnGSee.add(rdbtnSeeWoman);
 		rdbtnSeeWoman.setBounds(98, 50, 76, 23);
 		add(rdbtnSeeWoman);
 		
-		rdbtnSeeAll = new JRadioButton("Todos");
-		btnGSee.add(rdbtnSeeAll);
-		rdbtnSeeAll.setBounds(179, 53, 76, 23);
-		add(rdbtnSeeAll);
 		
 		btnSee = new JButton(BTN_SEE);
 		btnSee.setBounds(304, 47, 117, 29);
@@ -127,17 +123,15 @@ public class SeeRunner extends JPanel {
 	public JRadioButton getRdbtnSeeWoman() {
 		return rdbtnSeeWoman;
 	}
-	public JRadioButton getRdbtnSeeAll() {
-		return rdbtnSeeAll;
-	}
+	
 	public JButton getBtnSee() {
 		return btnSee;
 	}
 	public void setControl(ControllerMadridRockRoll c) {
 		
-		rdbtnSeeMan.addActionListener(c);
-		rdbtnSeeWoman.addActionListener(c);
-		rdbtnSeeAll.addActionListener(c);
+		//rdbtnSeeMan.addActionListener(c);
+		//rdbtnSeeWoman.addActionListener(c);
+		
 		btnSee.addActionListener(c);
 		
 		
