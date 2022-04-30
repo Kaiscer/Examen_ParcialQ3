@@ -12,6 +12,7 @@ import model.Runner;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
@@ -19,16 +20,19 @@ import javax.swing.JButton;
 
 public class SeeRunner extends JPanel {
 	public static final String BTN_SEE = "Mostrar Lista";
+	public static final String RDBTN_ALL = "Todos";
 	private JScrollPane scrollTable;
 	private JTable tableRunners;
 	private JRadioButton rdbtnSeeMan;
 	private JRadioButton rdbtnSeeWoman;
 	
-	private final ButtonGroup btnGSee = new ButtonGroup();
+	private final ButtonGroup btnGroupSee = new ButtonGroup();
 	private JButton btnSee;
 	private DefaultTableModel tModel;
 	
 	DataBase data;
+	private JRadioButton rdbtnAll;
+	private JLabel lblRunners;
 	
 	public SeeRunner() {
 		initComponents();
@@ -50,12 +54,12 @@ public class SeeRunner extends JPanel {
 		add(lblFiltrar);
 		
 		rdbtnSeeMan = new JRadioButton(AddRunner.RDBTN_MAN);
-		btnGSee.add(rdbtnSeeMan);
+		btnGroupSee.add(rdbtnSeeMan);
 		rdbtnSeeMan.setBounds(6, 50, 89, 23);
 		add(rdbtnSeeMan);
 		
 		rdbtnSeeWoman = new JRadioButton(AddRunner.RDBTN_WOMAN);
-		btnGSee.add(rdbtnSeeWoman);
+		btnGroupSee.add(rdbtnSeeWoman);
 		rdbtnSeeWoman.setBounds(98, 50, 76, 23);
 		add(rdbtnSeeWoman);
 		
@@ -63,6 +67,15 @@ public class SeeRunner extends JPanel {
 		btnSee = new JButton(BTN_SEE);
 		btnSee.setBounds(304, 47, 117, 29);
 		add(btnSee);
+		
+		rdbtnAll = new JRadioButton(RDBTN_ALL);
+		btnGroupSee.add(rdbtnAll);
+		rdbtnAll.setBounds(202, 50, 90, 23);
+		add(rdbtnAll);
+		
+		lblRunners = new JLabel("");
+		lblRunners.setBounds(46, 262, 311, 16);
+		add(lblRunners);
 	}
 	private void configTable() {
 		
@@ -124,23 +137,28 @@ public class SeeRunner extends JPanel {
 		return rdbtnSeeWoman;
 	}
 	
+	
+	
+	
+	public void setLblRunners(JLabel lblRunners) {
+		this.lblRunners = lblRunners;
+	}
+	public JRadioButton getRdbtnAll() {
+		return rdbtnAll;
+	}
 	public JButton getBtnSee() {
 		return btnSee;
 	}
 	public void setControl(ControllerMadridRockRoll c) {
 		
-		//rdbtnSeeMan.addActionListener(c);
-		//rdbtnSeeWoman.addActionListener(c);
-		
+				
 		btnSee.addActionListener(c);
 		
 		
 	}
-	
-	
-	
-	
-	
-	
-	
+	public void setLblRunners(String string) {
+		lblRunners.setText(string);
+		lblRunners.setForeground(Color.BLUE);
+		
+	}
 }
