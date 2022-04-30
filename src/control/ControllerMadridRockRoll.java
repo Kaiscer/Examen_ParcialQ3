@@ -20,7 +20,9 @@ public class ControllerMadridRockRoll implements ActionListener {
 	AddRunner pAdd;
 	SeeRunner pSee;
 	DataBase data;
-	
+	private int contRunners;
+	private int contRuMan;
+	private int contRuWoman;
 	
 	
 	
@@ -66,8 +68,13 @@ public class ControllerMadridRockRoll implements ActionListener {
 			if (btn == pAdd.getBtnAdd()) {
 				Runner rn = pAdd.requestData();
 				if (rn != null) {
-		
+					if (rn.getSexo().equals(AddRunner.RDBTN_WOMAN)) {
+						contRuMan++;
+					}else {
+						contRuWoman++;
+					}
 					data.addCorredor(rn);
+					contRunners++;
 					
 					JOptionPane.showMessageDialog(pAdd, "Corredor añadido", "Resultado de operación", JOptionPane.INFORMATION_MESSAGE);	
 					pAdd.cleanForm();
@@ -82,13 +89,17 @@ public class ControllerMadridRockRoll implements ActionListener {
 					JOptionPane.showConfirmDialog(pSee, "No hay datos cargados", "Error de datos", JOptionPane.ERROR_MESSAGE);
 				
 				}else {
-					pSee.fillTable(data.getListRunners());
-					pSee.hacerVisible(true);
-					
-					if (pSee.getRdbtnSeeMan().isSelected()) {
+					if (pSee.getRdbtnAll().isSelected()) {
+						pSee.fillTable(data.getListRunners());
+						pSee.setLblRunners("Corredores confirmados: " + contRunners);
+						pSee.hacerVisible(true);
+						
+					}else if (pSee.getRdbtnSeeMan().isSelected()) {
 						pSee.fillTable(data.getListFilter(AddRunner.RDBTN_MAN));
+						pSee.setLblRunners("Corredores hombres confirmados: " + contRuMan);
 					}else if (pSee.getRdbtnSeeWoman().isSelected()) {
 						pSee.fillTable(data.getListFilter(AddRunner.RDBTN_WOMAN));
+						pSee.setLblRunners("Corredoras mujeres confirmadas: " + contRuWoman);
 					}
 					
 				}

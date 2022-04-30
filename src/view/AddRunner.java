@@ -15,6 +15,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JSpinner;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class AddRunner extends JPanel {
 	private static final String [] MODALIDAD = {" ","10000", "Medio Maratón", "Maratón"};
@@ -36,66 +38,66 @@ public class AddRunner extends JPanel {
 		initComponets();
 	}
 	private void initComponets() {
-		setLayout(null);
 		
 		JLabel lblName = new JLabel("Nombre:");
 		lblName.setBounds(6, 28, 59, 16);
-		add(lblName);
 		
 		txtname = new JTextField();
 		txtname.setBounds(75, 23, 197, 26);
-		add(txtname);
 		txtname.setColumns(10);
 		
 		JLabel lblDorsal = new JLabel("Dorsal:");
 		lblDorsal.setBounds(6, 68, 61, 16);
-		add(lblDorsal);
 		
 		txtDorsal = new JTextField();
 		txtDorsal.setBounds(75, 63, 165, 26);
-		add(txtDorsal);
 		txtDorsal.setColumns(10);
 		
 		JLabel lblSexo = new JLabel("Sexo:");
 		lblSexo.setBounds(6, 113, 40, 16);
-		add(lblSexo);
 		
 		rdbtnMan = new JRadioButton(RDBTN_MAN);
-		buttonGSexo.add(rdbtnMan);
 		rdbtnMan.setBounds(74, 109, 87, 23);
-		add(rdbtnMan);
+		buttonGSexo.add(rdbtnMan);
 		
 		rdbtnWoman = new JRadioButton(RDBTN_WOMAN);
-		buttonGSexo.add(rdbtnWoman);
 		rdbtnWoman.setBounds(160, 109, 87, 23);
-		add(rdbtnWoman);
+		buttonGSexo.add(rdbtnWoman);
 		
 		JLabel lblEdad = new JLabel("Edad:");
 		lblEdad.setBounds(6, 155, 61, 16);
-		add(lblEdad);
 		
 		spnEdad = new JSpinner();
+		spnEdad.setBounds(75, 150, 59, 26);
 		spnEdad.setEditor(new JSpinner.DefaultEditor(spnEdad));
 		spnEdad.setModel(new SpinnerNumberModel(16, 0, 100, 1));
-		spnEdad.setBounds(75, 150, 59, 26);
-		add(spnEdad);
 		
 		JLabel lblModalidad = new JLabel("Modalidad:");
 		lblModalidad.setBounds(146, 155, 81, 16);
-		add(lblModalidad);
 		
 		cmbModalidad = new JComboBox<String>();
-		cmbModalidad.setModel(new DefaultComboBoxModel<String>(MODALIDAD));
 		cmbModalidad.setBounds(220, 151, 153, 27);
-		add(cmbModalidad);
+		cmbModalidad.setModel(new DefaultComboBoxModel<String>(MODALIDAD));
 		
 		btnAdd = new JButton(BTN_ADD);
 		btnAdd.setBounds(220, 228, 117, 29);
-		add(btnAdd);
 		
 		btnClean = new JButton(BTN_CLEAN);
 		btnClean.setBounds(49, 228, 117, 29);
+		setLayout(null);
+		add(lblName);
+		add(txtname);
+		add(lblDorsal);
+		add(txtDorsal);
+		add(lblSexo);
+		add(rdbtnWoman);
+		add(rdbtnMan);
+		add(lblEdad);
+		add(spnEdad);
+		add(cmbModalidad);
+		add(lblModalidad);
 		add(btnClean);
+		add(btnAdd);
 	}
 	public JButton getBtnAdd() {
 		return btnAdd;
@@ -173,6 +175,4 @@ public class AddRunner extends JPanel {
 		
 		
 	}
-	
-	
 }
