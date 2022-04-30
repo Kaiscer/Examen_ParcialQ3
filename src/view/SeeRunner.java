@@ -136,9 +136,7 @@ public class SeeRunner extends JPanel {
 	public JRadioButton getRdbtnSeeWoman() {
 		return rdbtnSeeWoman;
 	}
-	
-			
-	public JRadioButton getRdbtnAll() {
+		public JRadioButton getRdbtnAll() {
 		return rdbtnAll;
 	}
 	public JButton getBtnSee() {
